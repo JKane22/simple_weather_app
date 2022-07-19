@@ -1,10 +1,16 @@
 import React from "react";
 import "./App.css";
 
+// Error Handling components
+import Alert from "react-bootstrap/Alert";
+
 function App() {
   const [canSearch, setCanSearch] = React.useState(false);
   const [showResults, setShowResults] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
+
+  // Error handling
+  const [show, setShow] = React.useState(false);
 
   // Data from the API
   const [data, setData] = React.useState<any>();
@@ -16,8 +22,13 @@ function App() {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setData(data);
         setShowResults(true);
+      })
+      .catch((err) => {
+        setShow(true);
+        console.log(err);
       });
   }
 
@@ -76,6 +87,17 @@ function App() {
             Search for Weather
           </button>
         </div>
+        {/* Error Popup for User */}
+        <div>
+          {show ? (
+            <div style={{ marginTop: "15px" }}>
+              <Alert style={{ borderRadius: "15px" }} variant="danger" onClose={() => setShow(false)} dismissible>
+                <Alert.Heading style={{ backgroundColor: "#f8d7da", fontWeight: "bold", alignContent: "center" }}>Failed to fetch Weather Data for API!</Alert.Heading>
+              </Alert>
+            </div>
+          ) : null}
+        </div>
+        {/* Showing the results */}
         <div className="Results">
           {showResults ? (
             <div>
@@ -103,9 +125,7 @@ function App() {
                     <h1>Temperature: {Math.floor(data.data[0].temp)}°F</h1>{" "}
                   </div>
                   <div style={{ display: "flex", flexDirection: "row" }}>
-                    <h1>
-                      Sky Condition: {data.data[0].weather.description}
-                    </h1>
+                    <h1>Sky Condition: {data.data[0].weather.description}</h1>
                   </div>
                   <div style={{ display: "flex", flexDirection: "row" }}>
                     <h1>Wind Speed: {Math.floor(data.data[0].wind_spd)} mph</h1>
