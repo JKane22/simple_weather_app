@@ -25,7 +25,6 @@ function App() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setData(data);
         setShowResults(true);
       })
@@ -51,7 +50,7 @@ function App() {
                 color: "black",
                 fontSize: "23px",
                 fontWeight: "bold",
-                height: "50px",
+                height: "55px",
                 borderRadius: "10px",
               }}
               id="city_name"
@@ -78,15 +77,21 @@ function App() {
                       backgroundColor: "#1ade16",
                       border: "10px",
                       color: "white",
-                      height: "50px",
+                      height: "55px",
                       borderRadius: "10px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "23px",
                     }
                   : {
                       backgroundColor: "grey",
                       border: "10px",
                       color: "white",
-                      height: "50px",
+                      height: "55px",
                       borderRadius: "10px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "23px",
                     }
               }
             >
@@ -138,20 +143,55 @@ function App() {
                     fontSize: "30px",
                   }}
                 >
-                  {data?.data[0]?.city_name}, {data.data[0].state_code}
+                  <div style={{
+                    color: "black",
+                    fontSize: "30px",
+                    maxWidth: "200px",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    margin: "auto",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}>
+                    {data?.data[0]?.city_name}, {data.data[0].state_code}{" "}
+                  </div>
                   <div style={{ marginTop: "10px" }}>
-                    <div style={{ display: "flex", flexDirection: "row", backgroundColor: "#282c34" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        backgroundColor: "#282c34",
+                      }}
+                    >
                       <h1>Temperature: {Math.floor(data.data[0].temp)}°F</h1>{" "}
                     </div>
-                    <div style={{ display: "flex", flexDirection: "row", backgroundColor: "#282c34" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        backgroundColor: "#282c34",
+                      }}
+                    >
                       <h1>Sky Condition: {data.data[0].weather.description}</h1>
                     </div>
-                    <div style={{ display: "flex", flexDirection: "row", backgroundColor: "#282c34" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        backgroundColor: "#282c34",
+                      }}
+                    >
                       <h1>
                         Wind Speed: {Math.floor(data.data[0].wind_spd)} mph
                       </h1>
                     </div>
-                    <div style={{ display: "flex", flexDirection: "row", backgroundColor: "#282c34" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        backgroundColor: "#282c34",
+                      }}
+                    >
                       <h1>Humidity: {Math.floor(data.data[0].rh)}%</h1>
                     </div>
                   </div>
