@@ -1,22 +1,24 @@
 * { 
-  background-color: #282c34;
   color: white;
   font-family: 'Times New Roman', Times, serif;
   -ms-overflow-style: none;
+  overflow: hidden;
 }
 
 .App {
+  background-color: #282c34;
   text-align: center;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
 }
 
 .App-header {
+  background-color: #282c34;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  height: 100vh;
 }
