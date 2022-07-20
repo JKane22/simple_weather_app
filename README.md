@@ -3,6 +3,10 @@ An API key is needed for this to run, You can get the API key at [WeatherBit](ht
 
 # How to Start?
 
+### `npm i`
+This is needed to install all of the dependencies for the app to work.\
+The installment process wont take long as I didnt use much to create this app.
+
 ### `npm start`
 
 Runs the app in the development mode.\
